@@ -28,9 +28,17 @@ public class MainT234 {
         System.out.println("\nTask 3:");
         int randNumber = new Random().nextInt(100);
         System.out.println("Sum > " + randNumber + ": " + getInteger(integers, (x) -> x > randNumber));
-        System.out.println("Array of strings, which begins from \'a\'" +
-        Arrays.toString(getStringFromThisLetter(list.toArray(new String[]{}), "a")));
+        char letter = (char)(new Random().nextInt(122 - 97) + 97);
+        System.out.println("Array of strings, which begins from \'" + letter + "\': " +
+        Arrays.toString(getStringFromThisLetter(list.toArray(new String[]{}), Character.toString(letter))));
 
+
+        System.out.println("\nTask 4:");
+        Converter converter = String::toUpperCase;
+        for (String str : list) {
+            list.set(list.indexOf(str), converter.convert(str));
+        }
+        System.out.println(list);
     }
 
     private static Integer getInteger(Integer[] integers, Predicate<Integer> predicate) {
@@ -46,6 +54,12 @@ public class MainT234 {
     private static String[] getStringFromThisLetter(String[] strings, String start) {
         return Stream.of(strings).filter((str) -> str.startsWith(start))
                 .collect(Collectors.toList()).toArray(new String[]{});
+    }
+
+    @FunctionalInterface
+    interface Converter {
+        String convert(String str);
+
     }
 
 }
