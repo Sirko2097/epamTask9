@@ -2,6 +2,8 @@ package task234;
 
 import java.util.*;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class MainT234 {
     public static void main(String[] args) {
@@ -23,6 +25,11 @@ public class MainT234 {
         System.out.println("Sorted array of integers: " + Arrays.toString(integers));
         System.out.println("Sorted array of strings: " + list);
 
+        System.out.println("\nTask 3:");
+        int randNumber = new Random().nextInt(100);
+        System.out.println("Sum > " + randNumber + ": " + getInteger(integers, (x) -> x > randNumber));
+        System.out.println("Array of strings, which begins from \'a\'" +
+        Arrays.toString(getStringFromThisLetter(list.toArray(new String[]{}), "a")));
 
     }
 
@@ -34,6 +41,11 @@ public class MainT234 {
             }
         }
         return sum;
+    }
+
+    private static String[] getStringFromThisLetter(String[] strings, String start) {
+        return Stream.of(strings).filter((str) -> str.startsWith(start))
+                .collect(Collectors.toList()).toArray(new String[]{});
     }
 
 }
