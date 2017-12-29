@@ -16,7 +16,7 @@ public class MainPeople {
         System.out.println("\"We are in the army now\": ");
         people.stream().filter((p)->p.getAge() >= 21 && p.getSex() == SEX.MALE).forEach(System.out::println);
 
-        System.out.println("Middle age of women: ");
+        System.out.println("\nMiddle age of women: ");
         System.out.println(people.stream().filter((p)-> p.getSex() == SEX.FEMALE).mapToDouble(Person::getAge).average());
     }
 
