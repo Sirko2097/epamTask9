@@ -1,4 +1,4 @@
-package Task5.number;
+package task5.number;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,4 +1,4 @@
-package Task5.people;
+package task5.people;
 
 import java.util.ArrayList;
 
